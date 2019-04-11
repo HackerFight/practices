@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hacker.openservice.lock.mapper.UserInfoMapper">
+
+    <resultMap id="userMap" type="com.hacker.openservice.lock.entry.UserInfoDO">
+        <id property="id" column="id"></id>
+        <result property="userId" column="user_id"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="classNo" column="class_no"></result>
+    </resultMap>
+
+    <select id="getRowLock" resultMap="userMap">
+        SELECT id, user_id, user_name, class_no FROM t_user_info WHERE  user_id = #{userId} FOR UPDATE
+    </select>
+
+    <update id="updateUser" parameterType="com.hacker.openservice.lock.entry.UserInfo">
+        UPDATE t_user_info set user_name = #{userName},class_no = #{classNo} WHERE user_id = #{userId}
+    </update>
+
+</mapper>
