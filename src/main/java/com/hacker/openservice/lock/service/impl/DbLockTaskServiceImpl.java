@@ -90,6 +90,8 @@ public class DbLockTaskServiceImpl implements DbLockTaskService {
                      //从配置中查询数据
                     // zdfConfigService.getConfigData();
 
+
+
                      //将查询到的数据做一些调整，然后更新到实例表中
                      //zdfInstanceService.update();
 
