@@ -11,7 +11,7 @@ import com.hacker.openservice.lock.entry.UserInfoDO;
 public interface UserInfoMapper {
 
     /**
-     * 获取锁
+     * 获取行锁（id 是 主键索引列）
      * @param userId
      * @return
      */
@@ -22,4 +22,11 @@ public interface UserInfoMapper {
      * @param userInfo
      */
     void updateUser(UserInfo userInfo);
+
+    /**
+     * 表锁，name 不是任何索引列
+     * @param name
+     * @return
+     */
+    UserInfoDO getTableRow(String name);
 }

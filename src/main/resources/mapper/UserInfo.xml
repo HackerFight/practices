@@ -14,6 +14,10 @@
         SELECT id, user_id, user_name, class_no FROM t_user_info WHERE  user_id = #{userId} FOR UPDATE
     </select>
 
+    <select id="getTableRow" resultMap="userMap">
+        SELECT id, user_id, user_name, class_no FROM t_user_info WHERE  user_name = #{name} FOR UPDATE
+    </select>
+
     <update id="updateUser" parameterType="com.hacker.openservice.lock.entry.UserInfo">
         UPDATE t_user_info set user_name = #{userName},class_no = #{classNo} WHERE user_id = #{userId}
     </update>

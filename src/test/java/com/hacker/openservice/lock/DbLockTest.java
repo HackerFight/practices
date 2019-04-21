@@ -1,5 +1,7 @@
 package com.hacker.openservice.lock;
 
+import com.hacker.openservice.lock.service.DbLockTaskService;
+import com.hacker.openservice.lock.service.impl.DbLockTaskServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,8 +19,12 @@ public class DbLockTest {
         //ApplicationContext-lock.xml
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:/spring/ApplicationContext-lock.xml");
 
-        System.out.println(Arrays.toString(ctx.getBeanDefinitionNames()));
+       // System.out.println(Arrays.toString(ctx.getBeanDefinitionNames()));
 
-        System.out.println(ctx.getApplicationName());
+       // System.out.println(ctx.getApplicationName());
+
+        DbLockTaskService lockTaskService = ctx.getBean(DbLockTaskService.class);
+
+        lockTaskService.rowLock();
     }
 }
